@@ -1,24 +1,40 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import Chart from './components/Chart';
+import Diagramm from './components/Diagramm';
 import Unit from './components/Unit';
-import { DispachType, getItem } from './redux/libReducer';
+import { DispachType, getItem, sendItem } from './redux/libReducer';
 import { AppStateType } from './redux/store';
 
 function App() {
   let dispatch: DispachType = useDispatch();
-  let arr = useSelector((state: AppStateType) => state.lib);
+  let arr = useSelector((state: AppStateType) => state.lib.arr);
+
   useEffect(() => {
-    debugger;
     dispatch(getItem());
+    setInterval(() => {
+      dispatch(getItem());
+    }, 10000);
+    setInterval(() => {
+      dispatch(sendItem());
+    }, 60000);
   }, []);
-  debugger;
+
   const values = arr.map((elem, i) => {
     return <Unit key={elem.toString() + i} temp={elem} ind={i} />;
   });
   return (
     <div className="App">
-      <header className="App-header">{values}</header>
+      <h2>Показания датчиков:</h2>
+      <div className="App-header">
+        <div className="items">{values}</div>
+        <Diagramm />
+      </div>
+      <div className="charts">
+        <h2>Суточный график:</h2>
+        <Chart />
+      </div>
     </div>
   );
 }
