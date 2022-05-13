@@ -6,7 +6,7 @@ import { getDay, InitialDayStateType, ItemType } from '../redux/dayReducer';
 import { AppStateType } from '../redux/store';
 
 const Chart = () => {
-  let [date, setDate] = useState('2022-04-16');
+  let [date, setDate] = useState('2022-05-11');
   let day: InitialDayStateType = useSelector((state: AppStateType) => {
     return state.day;
   });

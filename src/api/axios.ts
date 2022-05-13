@@ -2,26 +2,16 @@ import axios from "axios";
 import { ItemType } from "../redux/dayReducer";
 import { InitialStateType } from "../redux/libReducer";
 
-const instance = axios.create({
-    baseURL: 'http://beeb0a9e670c.sn.mynetname.net:8383',
-    responseType: 'document',
-    transformResponse: [function (data) {
-        let arr: Array<number> = []
-        let nodes = data.querySelectorAll('h1');
-        nodes.forEach((elem: any) => {
-            let result = elem.innerText.split(': ');
-            arr.push(+result[1]);
-        });
-        return arr;
-    }],
+const instanceCurrent = axios.create({
+    baseURL: 'http://192.168.1.182:3001/api/currentData/',
 })
 
 const instanceDB = axios.create({
-    baseURL: 'http://localhost:3001/api/tempData/',
+    baseURL: 'http://192.168.1.182:3001/api/tempData/',
 })
 
 const instanceDay = axios.create({
-    baseURL: 'http://localhost:3001/api/tempData/',
+    baseURL: 'http://192.168.1.182:3001/api/tempData/',
     responseType: 'text',
     transformResponse: [(responce) => {
         let arr = JSON.parse(responce)
@@ -47,7 +37,7 @@ const instanceDay = axios.create({
 })
 
 export const getData = () => {
-    return (instance.get('').then(responce => responce.data))
+    return (instanceCurrent.get('').then(responce => responce.data[0].arr))
 };
 export const getDataOfDay = (day: string) => {
     return (instanceDay.get(`${day}`).then(responce => responce.data))

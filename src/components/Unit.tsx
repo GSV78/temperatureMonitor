@@ -9,7 +9,7 @@ const Unit: FC<{ key: string; temp: number; ind: number }> = ({ temp, ind }) => 
         cold: temp < 15,
         hot: temp > 40,
       })}>
-      датчик №{ind + 1}: {temp} градусов
+      датчик №{ind + 1}: {temp} &deg;C
     </div>
   );
 };

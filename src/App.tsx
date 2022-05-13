@@ -4,7 +4,7 @@ import './App.css';
 import Chart from './components/Chart';
 import Diagramm from './components/Diagramm';
 import Unit from './components/Unit';
-import { DispachType, getItem, sendItem } from './redux/libReducer';
+import { DispachType, getItem } from './redux/libReducer';
 import { AppStateType } from './redux/store';
 
 function App() {
@@ -16,17 +16,16 @@ function App() {
     setInterval(() => {
       dispatch(getItem());
     }, 10000);
-    setInterval(() => {
-      dispatch(sendItem());
-    }, 60000);
   }, []);
 
   const values = arr.map((elem, i) => {
-    return <Unit key={elem.toString() + i} temp={elem} ind={i} />;
+    if (elem) {
+      return <Unit key={elem.toString() + i} temp={elem} ind={i} />;
+    }
   });
   return (
     <div className="App">
-      <h2>Показания датчиков:</h2>
+      <h2>Текущие показания датчиков:</h2>
       <div className="App-header">
         <div className="items">{values}</div>
         <Diagramm />

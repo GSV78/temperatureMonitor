@@ -102,13 +102,4 @@ export const getDay = (): ThunkType => async (dispatch, getState) => {
     dispatch(getLibSuccess(data))
 };
 
-export const sendItem = (): ThunkType => async (dispatch, getState) => {
-    let data: InitialStateType = getState().lib
-    console.log(data);
-    if (data.time.includes(':00') || data.time.includes(':15') || data.time.includes(':30') || data.time.includes(':45')) {
-        sendData(data)
-        console.log('post to DB');
-    }
-};
-
 export default libReducer;

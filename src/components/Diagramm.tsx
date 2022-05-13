@@ -1,4 +1,3 @@
-import React, { PureComponent } from 'react';
 import { useSelector } from 'react-redux';
 import {
   BarChart,

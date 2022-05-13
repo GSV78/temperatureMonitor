@@ -2,17 +2,12 @@
   text-align: left;
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-} */
-
 .App-header {
   background-color: #ffffff;
   display: flex;
   flex-wrap: wrap;
   padding: 0px 20px;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 10px;
 }
@@ -31,10 +26,6 @@ h3 {
   padding: 5px 10px;
   color: chocolate;
 }
-
-/* .chart {
-  background-color: #fff;
-} */
 
 .item {
   color: seagreen;
