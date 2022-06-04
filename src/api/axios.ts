@@ -3,15 +3,15 @@ import { ItemType } from "../redux/dayReducer";
 import { InitialStateType } from "../redux/libReducer";
 
 const instanceCurrent = axios.create({
-    baseURL: 'http://192.168.1.182:3001/api/currentData/',
+    baseURL: 'http://localhost:3001/api/currentData/',
 })
 
 const instanceDB = axios.create({
-    baseURL: 'http://192.168.1.182:3001/api/tempData/',
+    baseURL: 'http://localhost:3001/api/tempData/',
 })
 
 const instanceDay = axios.create({
-    baseURL: 'http://192.168.1.182:3001/api/tempData/',
+    baseURL: 'http://localhost:3001/api/tempData/',
     responseType: 'text',
     transformResponse: [(responce) => {
         let arr = JSON.parse(responce)
